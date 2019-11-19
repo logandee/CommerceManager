@@ -1,0 +1,17 @@
+<h3>
+    <span>Product Details</span>
+</h3>
+<div class="text-warning" *ngIf="!canDelete">Qty must be 0 in order to delete.</div>
+<div>
+    
+    <h5 class="d-inline-block col-3">Name</h5>
+    <p class="d-inline-block col-8">{{Prod.name}}</p>
+    <h5 class="d-inline-block col-3">Qty</h5>
+    <p class="d-inline-block col-8">{{Prod.qty}}</p>
+    <h5 class="d-inline-block col-3">Price</h5>
+    <p class="d-inline-block col-8">${{Prod.price}}</p>
+    
+</div>
+<button [routerLink]="['/products']">Return to Product List</button>
+<button *ngIf="canDelete" (click)="deleteProd(Prod._id)">Delete Product</button>
+

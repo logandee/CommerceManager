@@ -1,0 +1,24 @@
+<h3>
+    <span>Product List</span>
+</h3>
+<button [routerLink]="['/products/new']">Add New Product</button>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of allProducts">
+            <td>{{prod._id}}</td>
+            <td>{{prod.name}}</td>
+            <td>{{prod.qty}}</td>
+            <td>{{prod.price}}</td>
+            <td><button (click)="goToUpdate(prod._id)">Edit</button><button [routerLink]="['/products', prod._id]">Details</button></td>
+        </tr>
+    </tbody>
+</table>

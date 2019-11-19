@@ -1,0 +1,24 @@
+<h4>Update Product</h4>
+<form>
+    <!-- {{Prod | json}}
+    {{prodQty.valid | json}}
+    {{prodQty.touched | json}}
+    {{prodQty.dirty | json}} -->
+    <div>
+        <div class="text-danger" *ngIf="!prodName.valid && (prodName.touched && prodName.dirty)">Name needs to be at least 3 charaters</div>
+        <label for="Rest.name">Name: </label>
+        <input type="text" minlength="3" #prodName="ngModel" name="Prod.name" [(ngModel)]="Prod.name" minlength="3" required>
+        <br>
+        <div class="text-danger" *ngIf="!prodQty.valid && (prodQty.touched && prodQty.dirty) || (Prod.qty<0)">Qty must be a positive number</div>
+        <div class="text-danger" *ngIf="!prodPrice.valid && (prodPrice.touched && prodPrice.dirty)">Price must be a postive number</div>
+        <label for="Prod.qty">Quantity: </label>
+        <input type="number" min="0" #prodQty="ngModel" name="Prod.qty" [(ngModel)]="Prod.qty" required>
+        <br>
+        <label for="Prod.price">Price: $</label>
+        <input type="number" min="0" #prodPrice="ngModel" name="Prod.price" [(ngModel)]="Prod.price" required>
+        <br>
+    </div>
+    <button [routerLink]="['/products']">Cancel</button>
+    <button (click)="resetProd()">Reset</button>
+    <button [disabled]="!prodName.valid || !prodQty.valid || !prodPrice.valid" (click)="updateProd()">Update Product</button>
+</form>
